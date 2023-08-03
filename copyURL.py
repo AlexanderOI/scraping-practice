@@ -1,12 +1,21 @@
-import pyautogui as pg
-import pyperclip
+from bs4 import BeautifulSoup
+import requests
 
-pg.click(247, 60)
-pg.hotkey('ctrl', 'c')
+url = 'https://www.stock.com.py/default.aspx/'
+response = requests.get(url)
 
-text_paste = pyperclip.paste()
+if response.status_code == 200:
+    soup = BeautifulSoup(response.text, 'html.parser')
+    url_products = soup.find_all('a', class_='collapsed')
 
-with open("data/URL_products.txt", "a", encoding="utf-8") as file:
-    file.write(text_paste + "\n")
+    print(url_products)
+    for url_product in url_products:
+        products_text = url_product.text
+        href_url_products = url_product.get('href')
 
-print(text_paste)
+        if href_url_products:
+            with open('data/products_name.txt', 'a', encoding='utf-8') as file:
+                file.write(products_text + '\n')
+        else:
+            with open('data/products_name.txt', 'a', encoding='utf-8') as file:
+                file.write(' \n')

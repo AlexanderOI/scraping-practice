@@ -42,7 +42,6 @@ Caramelos/Chicles
 Chocolates
 Turrones
  
-Café/Té/Yerba
 Café
 Té
 Yerba
