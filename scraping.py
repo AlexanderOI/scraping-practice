@@ -31,7 +31,7 @@ if response.status_code == 200:
         images = a_image.find_all('img')
 
         count += 1
-        for idx, image in enumerate(images):
+        for image in images:
             image_url = image.get('src')
             image_alt = image.get('alt')
             print(image_alt)
@@ -46,7 +46,7 @@ if response.status_code == 200:
                         file.write(image_response.content)
                 else:
                     print(
-                        f"Error al descargar la imagen {idx}. Código de estado: {image_response.status_code}")
+                        f"Error al descargar la imagen {count}. Código de estado: {image_response.status_code}")
 
 else:
     print(
