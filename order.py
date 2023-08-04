@@ -23,5 +23,5 @@ for section_product in section_products:
         products[section_product][type_product] = []
         count += 1
 
-with open("products.json", "w", encoding="utf-8") as file:
+with open("data/products.json", "w", encoding="utf-8") as file:
     json.dump(products, file, ensure_ascii=False, indent=2)
