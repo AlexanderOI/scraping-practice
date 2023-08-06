@@ -23,7 +23,7 @@ def get_products(url, id_num):
 
         a_images = soup.find_all('a', class_='picture-link')
 
-        if titles == []:
+        if titles == [] or len(titles) == 1:
             with open('data/products.txt', 'a', encoding='utf-8') as file:
                 file.write(' \n')
             return False, id_num
