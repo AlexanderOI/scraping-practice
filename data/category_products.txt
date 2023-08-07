@@ -25,7 +25,6 @@ Legumbres secas
 Leche en Polvo/varios
 Postres en Polvo
 Repostería/ Pasteleria
-Salsas
  
 Fideos/Fécula
 Galletitas/Postres
@@ -58,7 +57,6 @@ Camping
 Conservadora/Champañera
 Terere/Mate
  
-Acces. Madera
 Acces. Acero Inox.
 Acces. Aluminio
 Acces. Plásticos
@@ -79,7 +77,6 @@ Otros Decoración
 Lavado/Planchado
 Organizadores
  
-Madera
 Vidrio
 Metal/Aluminio
 Plástico/Melamina
@@ -87,10 +84,8 @@ Plástico/Melamina
 Alimentación
 Aseo
 Muebles y Seguridad
-Plásticos
  
 Cereales
-Leche
 Preparados
  
 Aceites
@@ -111,7 +106,6 @@ Tequila
 Vodka
  
 Rubias
-Negras
  
 Vinos Espumantes
 Sidras
@@ -164,7 +158,6 @@ Verduras
  
 de Aves
 Vacuna
-de Pescados / de Sojas
  
 Mariscos
 Pescados
@@ -237,7 +230,6 @@ Larga Vida
 Refrigeradas
  
 Larga Vida
-Refrigeradas
  
 Manteca
 Margarina
@@ -319,13 +311,11 @@ Piscina
 Accesorios de Pintura
  
 Cuidado y Limpieza
-Lubricantes/Repuestos
  
 Acces.Perros/Gatos
 Alimento de Aves
 Alimento de Perros
 Alimento para Gatos
-Varios/Mascotas
 Higiene Animal
  
 Bizcochos

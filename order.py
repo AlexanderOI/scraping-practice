@@ -39,28 +39,32 @@ count_products = 0
 products_id = 0
 for section in products:
     for type_product in products[section]:
-        list_products: list = products[section][type_product]
-        while products_txt != ' \n':
-            if products_txt[count_products] == ' \n':
-                count_products += 1
-                if products_txt[count_products] == ' \n':
-                    count_products += 1
-                    break
+        print(category_products[count_categoty])
+        while category_products[count_categoty] != ' \n':
+            try:
+                while products_txt[count_products] != ' \n':
 
-            products_id += 1
-            list_products.append({
-                "productId": products_id,
-                "category": category_products[count_categoty].replace('\n', ''),
-                "product": products_txt[count_products].replace('\n', ''),
-                "alt": products_txt[count_products + 1].replace('\n', ''),
-                "price": int(products_txt[count_products + 2].replace('Gs   ', '').replace('.', '').replace('\n', '')),
-                "stock": random.randint(40, 150),
-                "img": "https://images.vexels.com/media/users/3/131854/isolated/preview/d939c27b70134fa62d08031cca214c29-preguntas-signo-by-vexels.png"
-            })
+                    products_id += 1
+                    products[section][type_product].append({
+                        "productId": products_id,
+                        "category": category_products[count_categoty].replace('\n', ''),
+                        "product": products_txt[count_products].replace('\n', ''),
+                        "alt": products_txt[count_products + 1].replace('\n', ''),
+                        "price": int(products_txt[count_products + 2].replace('Gs   ', '').replace('.', '').replace('\n', '')),
+                        "stock": random.randint(40, 150),
+                        "img": "https://images.vexels.com/media/users/3/131854/isolated/preview/d939c27b70134fa62d08031cca214c29-preguntas-signo-by-vexels.png"
+                    })
+                    count_products += 3
+            except IndexError:
+                break
 
-            count_products += 3
+            count_products += 1
+            count_categoty += 1
+
+            if count_products > 54817:
+                break
+
         count_categoty += 1
-
 
 with open("json/products.json", "w", encoding="utf-8") as file:
     json.dump(products, file, ensure_ascii=False, indent=2)

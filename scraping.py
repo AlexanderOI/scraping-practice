@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 directory_path_img = 'images/'
 
 
-def get_products(url, id_num):
+def get_products(url):
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -21,73 +21,40 @@ def get_products(url, id_num):
 
         prices = soup.find_all('span', class_='productPrice')
 
-        a_images = soup.find_all('a', class_='picture-link')
-
         if titles == [] or len(titles) == 1:
             with open('data/products.txt', 'a', encoding='utf-8') as file:
                 file.write(' \n')
-            return False, id_num
+            return
 
-        for title, price, a_image in zip(titles, prices, a_images):
-            title.text
-            price.text
+        for title, price in zip(titles, prices):
 
-            images = a_image.find_all('img')
+            with open('data/first_product.txt', 'a', encoding='utf-8') as file:
 
-            for image in images:
+                file.write(title.text + '\n')
 
-                image_url = image.get('src')
-                image_alt = image.get('alt')
-                with open('data/products.txt', 'a', encoding='utf-8') as file:
-                    if image_alt is None:
-                        image_alt = 'None'
+            print(title.text)
 
-                    file.write(title.text + '\n')
-                    file.write(image_alt + '\n')
-                    file.write(price.text + '\n')
+            break
 
-                print(title.text)
-                print(image_alt)
-                print(price.text)
-
-                if image_url:
-                    image_response = requests.get(image_url)
-                    id_num += 1
-                    if image_response.status_code == 200:
-                        image_path = os.path.join(
-                            directory_path_img, f"ProductoId - {id_num}.jpg")
-                        with open(image_path, 'wb') as file:
-                            file.write(image_response.content)
-                    else:
-                        print(
-                            f"Error al descargar la imagen {id_num}. Código de estado: {image_response.status_code}")
-
-        return True, id_num
+        return
 
     else:
         print(
             f"Error al obtener la página. Código de estado: {response.status_code}")
         with open('data/products.txt', 'a', encoding='utf-8') as file:
             file.write(' \n')
-        return False, id_num
+        return
 
 
-extent_url_pages = '?pageindex='
-space = ' \n'
+space = '\n'
 
 with open('data/URL_products.txt', 'r', encoding='utf-8') as file:
     URL_products = file.readlines()
 
-id_num = 0
 for url in URL_products:
-    count = 0
-    pages = True
     if url == space:
-        with open('data/products.txt', 'a', encoding='utf-8') as file:
+        with open('data/first_product.txt', 'a', encoding='utf-8') as file:
             file.write(space)
     else:
-        while pages:
-            url_op = url.replace('\n', '')
-            count += 1
-            pages, id_num = get_products(
-                f'{url_op}{extent_url_pages}{count}', id_num)
+        url_op = url.replace('\n', '')
+        get_products(f'{url_op}')
