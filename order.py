@@ -61,9 +61,6 @@ for section in products:
             count_products += 1
             count_categoty += 1
 
-            if count_products > 54817:
-                break
-
         count_categoty += 1
 
 with open("json/products.json", "w", encoding="utf-8") as file:
